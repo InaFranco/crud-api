@@ -1,0 +1,35 @@
+version: '3.8'
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    restart: always
+    ports:
+      - ${MONGODB_PORT}:27017
+    environment:
+      MONGODB_AUTH_USER: ${MONGODB_AUTH_PASSWORD}
+      MONGODB_AUTH_PASSWORD: ${MONGODB_AUTH_PASSWORD}
+    volumes:
+      - ./mongodb-volume:/data/db
+  crud_api:
+    image: node:latest
+    container_name: crud-api
+    restart: always
+    env_file:
+      - .env
+    environment:
+      MONGODB_HOST: mongodb 
+    depends_on: 
+      - mongodb
+    ports:
+      - ${PORT}:${PORT}
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    working_dir: /usr/src/app
+    command: bash -c "npm install && npm start"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "5"

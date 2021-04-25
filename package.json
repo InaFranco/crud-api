@@ -1,0 +1,27 @@
+{
+  "name": "crud-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app/index.js",
+    "build-start": "npm install && npm run start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/InaFranco/crud-api.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/InaFranco/crud-api/issues"
+  },
+  "homepage": "https://github.com/InaFranco/crud-api#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.12.5",
+    "npm": "^7.10.0"
+  }
+}
