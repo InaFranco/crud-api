@@ -1,7 +1,15 @@
 # crud-api
 
-TODO: 
-  - aula 3 (recuperar senha, crud)
-  - conseguir acessar o mongo de dentro do docker (docker-compose?)
-  - usar variaveis de ambiente (config)
-  - criar documentação no readme e com OPEN-API
+Rest API simples que serve de interface para o banco de dados.
+
+- /auth
+  - /signup:
+  - /login:
+- /user
+  - /info:
+- /"collection"
+  - /create
+  - /update
+  - /list
+  - /find
+  - /delete

@@ -14,7 +14,7 @@ function generateToken(userId) {
 }
 
 const authRouter = express.Router();
-authRouter.post('/register', async (req, res) => {
+authRouter.post('/signup', async (req, res) => {
   try {
     const { email } = req.body
 
@@ -40,7 +40,7 @@ authRouter.post('/register', async (req, res) => {
   }
 })
 
-authRouter.post('/authenticate', async (req, res) => {
+authRouter.post('/login', async (req, res) => {
   const { name, email, password } = req.body
   let user
 
