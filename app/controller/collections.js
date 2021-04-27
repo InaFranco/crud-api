@@ -3,8 +3,9 @@ const express = require('express')
 const authMiddleware = require('../middleware/auth')
 const Message = require('../model/message')
 
-const collectionsRouter = express.Router();
+const collectionsRouter = express.Router()
 collectionsRouter.use(authMiddleware)
+
 const availableCollections = {
   'message': Message
 }
@@ -19,8 +20,7 @@ function getCollectionNotFoundError(collectionName) {
 
 collectionsRouter.post('/:collectionName/create', async (req, res) => {
   const { collectionName } = req.params
-  const collectionName = 'message'
-  if (!collectionName in availableCollections) {
+  if (!collectionName in Object.keys(availableCollections)) {
     const error = getCollectionNotFoundError(collectionName)
     res.status(400).send({ error })
   }
@@ -29,9 +29,10 @@ collectionsRouter.post('/:collectionName/create', async (req, res) => {
   body.createdBy = req.userId
 
   try {
-    const result = await Message.create(body)
+    const collection = availableCollections[collectionName]
+    const result = await collection.create(body)
 
-    return res.send({ result })
+    return res.send(result)
   } catch (err) {
     const error = 'Error on create object'
     console.log(err)
