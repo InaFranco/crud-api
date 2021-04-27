@@ -3,10 +3,10 @@
 Rest API simples que serve de interface para o banco de dados.
 
 - /auth
-  - /signup:
-  - /login:
+  - /signup
+  - /login
 - /user
-  - /info:
+  - /info
 - /"collection"
   - /create
   - /update
